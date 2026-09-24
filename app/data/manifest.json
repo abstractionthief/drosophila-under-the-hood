@@ -1,0 +1,80 @@
+{
+  "dataset": "male-cns:v1.0",
+  "git_commit": "c964fad2fb5bb0d312a8dd7168747a3c541f6c03",
+  "git_dirty": true,
+  "edge_extraction_timestamp_utc": "2026-09-19 15:22:39 UTC",
+  "app_export_timestamp_utc": "2026-09-24 17:25:52 UTC",
+  "node_count_total_census": 211579,
+  "node_count_traced": 165122,
+  "edge_count": 25563197,
+  "classification_rule_version": "1.0.0",
+  "classification_rule_hash": "0f47123a83b1",
+  "classification_rule_hash_scope": "complete classification.py source (SHA-256 prefix)",
+  "pathway_default_params": {
+    "max_hops": 3,
+    "minimum_weight": 1,
+    "top_n_paths": 20,
+    "max_nodes": 150
+  },
+  "sankey_stage_count": 23,
+  "sankey_link_count": 67,
+  "matrix_cell_count": 80,
+  "pathway_pair_count": 80,
+  "coverage": {
+    "total_census": 211579,
+    "traced": 165122,
+    "traced_status_label_counts": {
+      "Prelim Roughly traced": 36387,
+      "Roughly traced": 71979,
+      "PRT Orphan": 140,
+      "RT Hard to trace": 2019,
+      "Reviewed": 54066,
+      "RT Orphan": 3,
+      "Leaves": 528
+    },
+    "superclass_missing": 44879,
+    "superclass_tbc": 94,
+    "sensory_class_missing": 111,
+    "sensory_total": 17885,
+    "output_category_total": 1019,
+    "output_category_subclass_derived": 789,
+    "output_category_exit_nerve_fallback": 187,
+    "output_category_unknown": 43
+  },
+  "category_counts": {
+    "input": {
+      "gustation": 1428,
+      "mechanosensation": 4291,
+      "hygrosensation": 66,
+      "proprioception": 1453,
+      "vision": 6091,
+      "thermosensation": 25,
+      "unknown": 1834,
+      "olfaction": 2639,
+      "other_sensory": 58
+    },
+    "processing": {
+      "vnc": 13161,
+      "optic_lobe": 99167,
+      "central_brain": 32164,
+      "ascending": 1846,
+      "descending": 1314
+    },
+    "output": {
+      "hind_leg": 131,
+      "wing": 76,
+      "proboscis": 67,
+      "neck": 45,
+      "abdomen": 295,
+      "middle_leg": 117,
+      "other_motor": 15,
+      "endocrine": 71,
+      "haltere": 18,
+      "front_leg": 141,
+      "unknown": 43
+    },
+    "unknown": 45023,
+    "total_census": 211579
+  },
+  "note": "weighted_shortest_path and max_flow are topological/graph measures (cost=1/weight, capacity=weight) - not biological signal-strength claims."
+}

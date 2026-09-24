@@ -1,0 +1,25 @@
+[project]
+name = "io-analysis"
+version = "1.0.0"
+description = "MaleCNS whole-connectome I/O analysis"
+requires-python = ">=3.11"
+dependencies = [
+    "numpy",
+    "scipy",
+    "polars",
+    "networkx",
+    "plotly",
+    "pyarrow",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/io_analysis"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+]

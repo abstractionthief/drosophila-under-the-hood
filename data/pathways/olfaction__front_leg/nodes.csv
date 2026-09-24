@@ -1,0 +1,151 @@
+bodyid,type,name,superclass,class,subclass,somaSide,somaNeuromere,consensusNt,predictedNt,receptorType,entryNerve,exitNerve,flywireType,mancType,hemibrainType,role_group
+10030,pIP1,pIP1_L,descending_neuron,,xl,L,,acetylcholine,acetylcholine,,,,,DNxl053,,descending
+10065,DNb05,DNb05_R,descending_neuron,,xn,R,,acetylcholine,acetylcholine,,,,DNb05,DNb05,DNb05,descending
+10118,DNb05,DNb05_L,descending_neuron,,xn,L,,acetylcholine,acetylcholine,,,,DNb05,DNb05,DNb05,descending
+89840,ORN_VA1v,ORN_VA1v_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+102946,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+118920,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+125395,ORN_VA7l,ORN_VA7l_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA7l,,ORN_VA7l,sensory_input
+138786,ORN_VL2a,ORN_VL2a_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VL2a,,ORN_VL2a,sensory_input
+140899,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+145394,ORN_VA1v,ORN_VA1v_unknown,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+160961,ORN_VL2a,ORN_VL2a_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VL2a,,ORN_VL2a,sensory_input
+163773,ORN_VA1v,ORN_VA1v_unknown,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+168233,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+173792,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+177456,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+179461,ORN_DC4,ORN_DC4_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DC4,,ORN_DC4,sensory_input
+186492,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+190022,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+192525,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+213507,ORN_DA1,ORN_DA1_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DA1,,ORN_DA1,sensory_input
+215878,ORN_DA1,ORN_DA1_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DA1,,ORN_DA1,sensory_input
+217189,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+220227,ORN_D,ORN_D_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_D,,ORN_D,sensory_input
+220480,ORN_V,ORN_V_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_V,,ORN_V,sensory_input
+227118,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+237101,ORN_DC4,ORN_DC4_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DC4,,ORN_DC4,sensory_input
+238985,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+241283,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+242344,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+245746,ORN_DA4l,ORN_DA4l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DA4l,,ORN_DA4l,sensory_input
+247534,ORN_DA1,ORN_DA1_unknown,cb_sensory,olfactory,,,,acetylcholine,unclear,,AN,,ORN_DA1,,ORN_DA1,sensory_input
+267717,ORN_V,ORN_V_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_V,,ORN_V,sensory_input
+292082,ORN_VL2a,ORN_VL2a_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VL2a,,ORN_VL2a,sensory_input
+341776,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+403849,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+417297,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+508478,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+519866,SMP142,SMP142_L,cb_intrinsic,,,L,,unclear,serotonin,,,,"SMP142,SMP145",,SMP142,central_processing
+519867,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+519868,ORN_DP1m,ORN_DP1m_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DP1m,,ORN_DP1m,sensory_input
+519896,DNa06,DNa06(PS039)_L,descending_neuron,,xn,L,,acetylcholine,acetylcholine,,,,DNa06,DNa06,PS039,descending
+519970,VA3_adPN,VA3_adPN_R,cb_intrinsic,ALPN,,R,,acetylcholine,acetylcholine,,,,VA3_adPN,,VA3_adPN,central_processing
+519971,ORN_VA3,ORN_VA3_unknown,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA3,,ORN_VA3,sensory_input
+519981,AN04B001,AN04B001_L,ascending_neuron,,IA,L,T1,acetylcholine,acetylcholine,,,,AN_GNG_VES_5,AN04B001,,other
+520002,lLN1_bc,lLN1_bc_R,cb_intrinsic,ALLN,,R,DC,acetylcholine,acetylcholine,,,,lLN1_bc,,"lLN1_b,lLN1_c",central_processing
+520118,DNge148,DNge148_L,descending_neuron,,xn,L,,acetylcholine,acetylcholine,,,,DNge148,DNxn147,,descending
+520300,DNg75,DNg75(hb1874217622)_R,descending_neuron,,xl,R,,acetylcholine,acetylcholine,,,,DNg75,DNg75,hb1874217622,descending
+520386,ANXXX108,ANXXX108_L,ascending_neuron,,BA,L,T1,gaba,gaba,,,,AN_multi_103,ANXXX108,,other
+520393,CRE042,CRE042_L,cb_intrinsic,,,L,,gaba,gaba,,,,CRE042,,CRE042,central_processing
+520787,lLN2T_a,lLN2T_a(Tortuous)_L,cb_intrinsic,ALLN,,L,DC,acetylcholine,acetylcholine,,,,lLN2X03,,lLN2T_a,central_processing
+520907,ORN_VC3,ORN_VC3_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VC3,,ORN_VC3l,sensory_input
+520908,ORN_VC2,ORN_VC2_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VC2,,ORN_VC2,sensory_input
+520909,ORN_VC2,ORN_VC2_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VC2,,ORN_VC2,sensory_input
+520913,ORN_VC2,ORN_VC2_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VC2,,ORN_VC2,sensory_input
+520915,ORN_VC2,ORN_VC2_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VC2,,ORN_VC2,sensory_input
+520916,VM6_adPN,VM6_adPN_R,cb_intrinsic,ALPN,,R,,acetylcholine,acetylcholine,,,,VM6_adPN,,VC5_adPN,central_processing
+520917,ORN_VM6v,ORN_VM6v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6v,,ORN_VC5,sensory_input
+520918,ORN_VM6v,ORN_VM6v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6v,,ORN_VC5,sensory_input
+520919,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+520920,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+520921,ORN_VM6m,ORN_VM6m_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6m,,ORN_VC5,sensory_input
+520924,ORN_VM2,ORN_VM2_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM2,,ORN_VM2,sensory_input
+520926,ORN_VM6m,ORN_VM6m_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6m,,ORN_VC5,sensory_input
+521108,M_lv2PN9t49_b,M_lv2PN9t49_b_R,cb_intrinsic,ALPN,,R,,gaba,gaba,,,,M_lv2PN9t49,,M_lv2PN9t49,central_processing
+521158,lLN2X12,lLN2X12_R,cb_intrinsic,ALLN,,R,DC,acetylcholine,unclear,,,,lLN2X12,,,central_processing
+521197,DNp56,DNp56(VES055)_R,descending_neuron,,fl,R,,acetylcholine,acetylcholine,,,,DNp56,DNp56,VES055,descending
+521399,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+521470,ORN_VA3,ORN_VA3_unknown,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA3,,ORN_VA3,sensory_input
+522961,DNp47,DNp47(PS293)_L,descending_neuron,,xn,L,,acetylcholine,acetylcholine,,,,DNp47,DNp47,PS293,descending
+523039,DNge055,DNge055_R,descending_neuron,,xl,R,,glutamate,glutamate,,,,DNge055,DNxl086,,descending
+523490,HRN_VP5,HRN_VP5_R,cb_sensory,hygrosensory,,,,acetylcholine,acetylcholine,,AN,,HRN_VP5,,HRN_VP5,sensory_input
+523509,ANXXX255,ANXXX255_R,ascending_neuron,,IA,R,T1,acetylcholine,acetylcholine,,,,AN_GNG_162,ANXXX255,,other
+523591,il3LN6,il3LN6_L,cb_intrinsic,ALLN,,L,GNG,gaba,gaba,,,,il3LN6,,il3LN6,central_processing
+523675,AN27X013,AN27X013_L,ascending_neuron,,XA,L,T2,unclear,serotonin,,,,AN_multi_124,AN27X013,,other
+523679,DNge051,DNge051_L,descending_neuron,,fl,L,,gaba,gaba,,,,DNge051,DNfl007,,descending
+523769,DNa02,DNa02_L,descending_neuron,,xl,L,,acetylcholine,acetylcholine,,,,DNa02,DNa02,DNa02,descending
+523771,DNge001,DNge001_R,descending_neuron,,fl,R,MX,acetylcholine,acetylcholine,,,,DNge001,DNfl029,,descending
+523827,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+523828,,,cb_intrinsic,ALLN,,L,DC,acetylcholine,acetylcholine,,,,"lLN2X09,lLN2X10",,,central_processing
+523839,AN08B026,AN08B026_L,ascending_neuron,,BA,L,T1,acetylcholine,acetylcholine,,,,AN_multi_57,AN08B026,,other
+523843,AN19A018,AN19A018(14863)_L,ascending_neuron,,BA,L,A1,acetylcholine,acetylcholine,,,,AN_GNG_76,AN19A018,,other
+523897,M_lvPNm45,M_lvPNm45_L,cb_intrinsic,ALPN,,L,TC,acetylcholine,acetylcholine,,,,M_lvPNm45,,M_lvPNm45,central_processing
+523941,M_lvPNm35,M_lvPNm35_R,cb_intrinsic,ALPN,,R,TC,acetylcholine,acetylcholine,,,,M_lvPNm35,,M_lvPNm35,central_processing
+524163,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+524164,,,cb_intrinsic,ALLN,,L,DC,acetylcholine,acetylcholine,,,,"lLN2X09,lLN2X10",,,central_processing
+524190,DNge012,DNge012_R,descending_neuron,,fl,R,LB,acetylcholine,acetylcholine,,,,DNge012,DNfl036,,descending
+524207,VA7m_lPN,VA7m_lPN_R,cb_intrinsic,ALPN,,R,DC,acetylcholine,acetylcholine,,,,VA7m_lPN,,VA7m_lPN,central_processing
+524208,lLN2X12,lLN2X12_R,cb_intrinsic,ALLN,,R,DC,acetylcholine,unclear,,,,lLN2X12,,,central_processing
+524210,ORN_VA7m,ORN_VA7m_unknown,cb_sensory,olfactory,,,,acetylcholine,unclear,,AN,,ORN_VA7m,,ORN_VA7m,sensory_input
+524234,ORN_VA3,ORN_VA3_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA3,,ORN_VA3,sensory_input
+524235,ORN_VA4,ORN_VA4_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VA4,,ORN_VA4,sensory_input
+524237,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+524238,lLN1_bc,lLN1_bc_R,cb_intrinsic,ALLN,,R,DC,acetylcholine,acetylcholine,,,,lLN1_bc,,"lLN1_b,lLN1_c",central_processing
+524245,AN09B014,AN09B014_R,ascending_neuron,,CA,R,T2,acetylcholine,acetylcholine,,,,AN_GNG_40,AN09B014,,other
+524278,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+524284,ALIN7,ALIN7_R,cb_intrinsic,ALIN,,R,,gaba,gaba,,,,ALIN7,,,central_processing
+524968,DNp32,DNp32_R,descending_neuron,,xl,R,CG,unclear,serotonin,,,,DNp32,DNp32,DNp32,descending
+525099,ORN_VM7d,ORN_VM7d_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,MxLbN,,ORN_VM7d,,ORN_VM7d,sensory_input
+525100,ORN_DL5,ORN_DL5_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DL5,,ORN_DL5,sensory_input
+525105,DL5_adPN,DL5_adPN_R,cb_intrinsic,ALPN,,R,,acetylcholine,acetylcholine,,,,DL5_adPN,,DL5_adPN,central_processing
+526711,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+532513,ORN_DC3,ORN_DC3_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_DC3,,ORN_DC3,sensory_input
+535897,ORN_VM6m,ORN_VM6m_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6m,,ORN_VC5,sensory_input
+539005,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+542600,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+545695,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+556286,DNp32,DNp32_L,descending_neuron,,xl,L,CG,unclear,serotonin,,,,DNp32,DNp32,DNp32,descending
+566569,ORN_VA6,ORN_VA6_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+582095,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+588642,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+800061,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+800636,Ti extensor MN,Ti extensor MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,ProLN,,Ti extensor MN,,motor
+801079,Sternotrochanter MN,Sternotrochanter MN_R,vnc_motor,,fl,R,T1,unclear,histamine,,,VProN,,Sternotrochanter MN,,motor
+801173,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+801685,Sternotrochanter MN,Sternotrochanter MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,VProN,,Sternotrochanter MN,,motor
+801824,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_R,vnc_motor,,fl,R,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+802072,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_R,vnc_motor,,fl,R,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+802361,Sternotrochanter MN,Sternotrochanter MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,VProN,,Sternotrochanter MN,,motor
+802509,Pleural remotor/abductor MN,Pleural remotor/abductor MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,ProAN,,Pleural remotor/abductor MN,,motor
+803237,Tergotr. MN,Tergotr. MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,VProN,,Tergotr. MN,,motor
+803314,Pleural remotor/abductor MN,Pleural remotor/abductor MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,ProAN,,Pleural remotor/abductor MN,,motor
+803412,Tr extensor MN,Tr extensor MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,ProAN,,Tr extensor MN,,motor
+803698,Sternotrochanter MN,Sternotrochanter MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,VProN,,Sternotrochanter MN,,motor
+804257,Ti extensor MN,Ti extensor MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,ProLN,,Ti extensor MN,,motor
+804465,Tergotr. MN,Tergotr. MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,VProN,,Tergotr. MN,,motor
+804941,Fe reductor MN,Fe reductor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,ProLN,,Fe reductor MN,,motor
+805598,Fe reductor MN,Fe reductor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,ProLN,,Fe reductor MN,,motor
+806599,Acc. ti flexor MN,Acc. ti flexor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,ProLN,,Acc. ti flexor MN,,motor
+807281,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+807906,Tr extensor MN,Tr extensor MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,ProLN,,Tr extensor MN,,motor
+810535,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_R,vnc_motor,,fl,R,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+810541,Ta levator MN,Ta levator MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,ProLN,,Ta levator MN,,motor
+812878,EN21X001,EN21X001_L,vnc_efferent,,,L,T1,unclear,unclear,,,DProN,,EN21X001,,other
+815344,Ti extensor MN,Ti extensor MN_L,vnc_motor,,fl,L,T1,unclear,unclear,,,ProLN,,Ti extensor MN,,motor
+815678,Ti extensor MN,Ti extensor MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,ProLN,,Ti extensor MN,,motor
+817347,Tergotr. MN,Tergotr. MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,VProN,,Tergotr. MN,,motor
+817655,Ta depressor MN,Ta depressor MN_L,vnc_motor,,fl,L,T1,glutamate,acetylcholine,,,ProLN,,Ta depressor MN,,motor
+818842,Tr extensor MN,Tr extensor MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,ProLN,,Tr extensor MN,,motor
+820110,Ta levator MN,Ta levator MN_R,vnc_motor,,fl,R,T1,glutamate,unclear,,,ProLN,,Ta levator MN,,motor
+838321,Tr extensor MN,Tr extensor MN_R,vnc_motor,,fl,R,T1,unclear,unclear,,,ProAN,,Tr extensor MN,,motor
+901019,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+915526,ORN_VA1v,ORN_VA1v_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA1v,,ORN_VA1v,sensory_input
+923221,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+934091,Tergopleural/Pleural promotor MN,Tergopleural/Pleural promotor MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,DProN,,Tergopleural/Pleural promotor MN,,motor
+954509,ORN_VA6,ORN_VA6_L,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VA6,,ORN_VA6,sensory_input
+115573815,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+282427758,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,unclear,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+451788176,ORN_VM6l,ORN_VM6l_R,cb_sensory,olfactory,,,,acetylcholine,acetylcholine,,AN,,ORN_VM6l,,ORN_VC5,sensory_input
+615060822,ORN_DL4,ORN_DL4_L,cb_sensory,olfactory,,,,acetylcholine,unclear,,AN,,ORN_DL4,,ORN_DL4,sensory_input
+1050111955,Ta levator MN,Ta levator MN_L,vnc_motor,,fl,L,T1,glutamate,unclear,,,ProLN,,Ta levator MN,,motor

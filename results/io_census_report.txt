@@ -1,0 +1,242 @@
+MaleCNS I/O census report
+==========================
+dataset: male-cns:v1.0
+extraction_timestamp_utc: 2026-09-21 18:03:08 UTC
+fetch_elapsed_seconds: 60.3
+
+Total rows in raw census (all DVID-annotated bodies): 211579
+Rows with status == 'Traced' (closest match to "neuron"): 165122 (78.0%)
+
+Status breakdown (all rows):
+x
+     Traced      Orphan        Glia Unimportant        <NA>      Assign 
+     165122       15925       11864       10751        5474        1832 
+     Anchor 
+        611 
+
+Superclass value counts (all 211579 rows):
+x
+         ol_intrinsic                  <NA>          cb_intrinsic 
+                89403                 44879                 32164 
+        vnc_intrinsic     visual_projection           vnc_sensory 
+                13161                  9201                  6370 
+           ol_sensory            cb_sensory      ascending_neuron 
+                 6098                  4868                  1846 
+    descending_neuron             vnc_motor    visual_centrifugal 
+                 1314                   708                   563 
+    sensory_ascending              cb_motor          vnc_efferent 
+                  537                   107                    94 
+         cb_endocrine                   ENS               vnc_tbc 
+                   72                    50                    38 
+      vnc_sensory_tbc         vnc_endocrine        cb_sensory_tbc 
+                   36                    22                    14 
+   sensory_descending    efferent_ascending           cb_efferent 
+                   12                     8                     4 
+  efferent_descending descending_neuron_tbc sensory_ascending_tbc 
+                    4                     2                     2 
+visual_projection_tbc 
+                    2 
+
+Class value counts, top 40 (all 211579 rows):
+x
+                         <NA>                        visual 
+                       185066                          6091 
+                  Kenyon_Cell                            CX 
+                         4064                          2950 
+                    olfactory        mechanosensory_tactile 
+                         2639                          2558 
+               mechanosensory               unknown_sensory 
+                         1733                          1712 
+mechanosensory_proprioceptive                     gustatory 
+                         1454                          1428 
+                         ALPN                          ALLN 
+                          686                           420 
+                          DAN                  ol_bilateral 
+                          340                           116 
+                         MBON                  hygrosensory 
+                           97                            66 
+                 chemosensory                         SEZPN 
+                           58                            27 
+                thermosensory                          ALIN 
+                           25                            24 
+                         ALON            mechanosensory_tbc 
+                           14                            11 
+
+Class values among sensory-superclass rows (n=17937):
+x
+                       visual                     olfactory 
+                         6091                          2639 
+       mechanosensory_tactile                mechanosensory 
+                         2558                          1733 
+              unknown_sensory mechanosensory_proprioceptive 
+                         1712                          1454 
+                    gustatory                          <NA> 
+                         1428                           162 
+                 hygrosensory                  chemosensory 
+                           66                            58 
+                thermosensory            mechanosensory_tbc 
+                           25                            11 
+
+Class values among output-superclass rows (n=1019) - see discrepancy note below:
+<NA> 
+1019 
+
+Subclass value counts, top 40 (all 211579 rows):
+x
+                  <NA>                     BI                     IR 
+                189649                   3336                   3048 
+mechanosensory bristle                     BR                     BA 
+                  2206                   1883                   1336 
+               abdomen                     CR                    leg 
+                  1145                   1039                    873 
+                    II            leg bristle           wind_gravity 
+                   838                    768                    475 
+                    xn   campaniform sensilla      chordotonal organ 
+                   441                    426                    425 
+          wing bristle                     ut                     xl 
+                   385                    276                    275 
+                    fl                     ad                  notum 
+                   250                    241                    230 
+               haltere       labellar bristle                     CA 
+                   205                    163                    160 
+                    CI                     hl                     IA 
+                   134                    132                    129 
+                    ml               auditory             hair plate 
+                   118                    115                    113 
+                    nt   pharyngeal sensillum          taste bristle 
+                   108                     87                     70 
+                    pm                     wm               grooming 
+                    67                     67                     65 
+             taste peg                   wing                     nm 
+                    60                     46                     44 
+                    lt 
+                    31 
+
+Subclass values among sensory-superclass rows, top 30 (n=17937):
+x
+                  <NA> mechanosensory bristle                abdomen 
+                 10082                   2206                   1143 
+                   leg            leg bristle           wind_gravity 
+                   872                    768                    475 
+  campaniform sensilla      chordotonal organ           wing bristle 
+                   426                    425                    385 
+                 notum                haltere       labellar bristle 
+                   230                    205                    163 
+              auditory             hair plate   pharyngeal sensillum 
+                   114                    113                     87 
+         taste bristle               grooming              taste peg 
+                    70                     65                     60 
+                  wing                   neck 
+                    46                      2 
+
+entryNerve value counts (all 211579 rows):
+x
+  <NA>     AN MetaLN  MxLbN MesoLN   ADMN  ProLN   AbN4 DMetaN   PDMN   AbN3 
+199744   3332   1522   1410   1403   1000    992    617    439    282    234 
+  AbNT   AbN2   aPhN    PhN     ON    PrN  ProCN  DProN  VProN  ProAN   AbN1 
+   213     88     80     47     39     37     37     32     19     10      2 
+
+exitNerve value counts (all 211579 rows):
+x
+       <NA>      MetaLN      MesoLN        AbNT        AbN4       ProLN 
+     210574         123         117         102          98          82 
+        NCC        AbN2         PhN        AbN3       DProN        ADMN 
+         71          53          42          35          33          32 
+       AbN1       MxLbN         CvN       ProAN       VProN      MesoAN 
+         31          26          25          24          22          19 
+      PDMNa          AN          ON      DMetaN       PDMNp         TBD 
+         18          15           9           6           6           6 
+ADMN,MesoAN        PDMN ADMN,DMetaN AbNT_L,AbNT   AbNT,AbN4 
+          3           3           2           1           1 
+
+somaNeuromere value counts (all 211579 rows):
+x
+  <NA>     T2     T1     T3     CG     LB     A1     TC     DC     MX     MD 
+189759   5076   4296   3976   2401   1313    933    729    568    500    372 
+    A2     A3     A4     A8     A5     A6     A9     A7    GNG    A10     NA 
+   273    241    212    198    179    164    143    116     89     39      2 
+
+receptorType coverage: 752 (0.4%) non-missing
+receptorType top values (non-missing only):
+x
+putative_ppk23 putative_ppk25 putative_IR52b 
+           269            257            226 
+
+consensusNt coverage: 187016 (88.4%) non-missing
+x
+acetylcholine     glutamate          <NA>       unclear          gaba 
+       104173         29443         24563         22645         22186 
+    histamine      dopamine    octopamine     serotonin 
+         8024           396           101            48 
+
+predictedNt coverage: 187016 (88.4%) non-missing
+x
+acetylcholine       unclear     glutamate          <NA>          gaba 
+        95400         35757         28199         24563         20348 
+     dopamine     histamine     serotonin    octopamine 
+         4447          2259           481           125 
+
+celltypePredictedNt coverage: 187016 (88.4%) non-missing
+x
+acetylcholine     glutamate       unclear          <NA>          gaba 
+        98512         29016         25115         24563         21483 
+    histamine      dopamine     serotonin    octopamine 
+         7969          4448           386            87 
+
+Missing-value percentage per retained field:
+  bodyid                 0 (0.0%)
+  type                   47073 (22.2%)
+  name                   50073 (23.7%)
+  superclass             44879 (21.2%)
+  class                  185066 (87.5%)
+  subclass               189649 (89.6%)
+  somaSide               60853 (28.8%)
+  somaNeuromere          189759 (89.7%)
+  entryNerve             199744 (94.4%)
+  exitNerve              210574 (99.5%)
+  receptorType           210827 (99.6%)
+  consensusNt            24563 (11.6%)
+  predictedNt            24563 (11.6%)
+  celltypePredictedNt    24563 (11.6%)
+  flywireType            68423 (32.3%)
+  mancType               188835 (89.3%)
+  hemibrainType          178660 (84.4%)
+  group                  64065 (30.3%)
+  rootSide               193640 (91.5%)
+  dimorphism             209211 (98.9%)
+
+Tentative io_role tally (superclass-based only, PROVISIONAL - see docs/io_classification_rules.md):
+  input  (sensory_input):                          17885 (8.5%)
+  output (motor_output+endocrine_output+other_efferent): 1019 (0.5%)
+  unknown (no superclass, '_tbc', or ENS):          45023 (21.3%)
+  full role breakdown:
+x
+  optic_processing            unknown central_processing      sensory_input 
+             99167              45023              32164              17885 
+    vnc_processing          ascending         descending       motor_output 
+             13161               1846               1314                815 
+    other_efferent   endocrine_output 
+               110                 94 
+
+Discrepancies vs. initial conceptual categories:
+  1. "~166k neurons" matches status == 'Traced' (165122), NOT the raw census
+     row count (211579). The raw census also includes Glia, Orphan, Assign,
+     Anchor, and Unimportant bodies, almost none of which have a superclass.
+  2. `class` is essentially unusable for output classification: among the
+     1019 rows with a motor/endocrine/efferent superclass, `class` is NA for
+     1019 of them (100%). Deriving output_category will require exitNerve /
+     somaNeuromere / type-name patterns instead, per docs/io_classification_rules.md.
+  3. `receptorType` covers only 752 (0.4%) of all rows - far too sparse to use as a
+     general classification field; useful only for specific OSN drill-downs.
+  4. Several superclasses carry an explicit '_tbc' (to-be-confirmed) suffix
+     in the dataset itself; these are treated as unknown rather than forced
+     into a role, honoring the dataset's own uncertainty rather than ours.
+  5. The candidate input_category 'auditory_antennal' has no direct match in
+     `class`; only `subclass` hints exist (e.g. 'auditory', 'wind_gravity',
+     'chordotonal organ') and will need dedicated subclass-level rules.
+  6. exitNerve -> body-part mapping (leg/wing/haltere/etc.) is not provided
+     by any MaleCNS field or package dataset inspected so far; any such
+     mapping relies on external published MANC nerve nomenclature and must
+     be flagged lower-confidence until cross-checked against the primary
+     literature (see docs/io_classification_rules.md).
+

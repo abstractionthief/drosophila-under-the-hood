@@ -1,0 +1,47 @@
+# R
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Rdata
+
+# renv / packrat (if used later)
+renv/library/
+renv/staging/
+renv/python/
+packrat/lib*/
+
+# Large raw data artifacts - reproducible from r/build_io_connectivity.R,
+# not meant to live in git history
+data/raw/
+
+# Large generated app data (271MB / 16MB) - regenerate via
+# io_analysis.export_skeletons / io_analysis.export_search_index
+app/data/skeletons/
+app/data/search_index.json
+
+# Python / uv
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+# Local Claude Code tooling state, not part of the project
+.claude/
+
+# Internal dev-process narrative (AI-assisted review back-and-forth,
+# internal decisions) - useful locally, not meant for the public repo
+docs/project_log.md
+docs/project_log.html
+
+# macOS
+.DS_Store
+
+# Secrets - never commit tokens or environment files
+.env
+.env.*
+.Renviron
+.httr-oauth
+*.token
+*token*.txt
