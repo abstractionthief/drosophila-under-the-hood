@@ -103,6 +103,10 @@ bindDisclosureToggle("details-toggle", "details-panel");
 bindDisclosureToggle("category-legend-toggle", "category-legend-panel");
 bindDisclosureToggle("coverage-panel-toggle", "coverage-panel");
 
+document.querySelectorAll(".info-disclosure").forEach((panel) => {
+  panel.addEventListener("toggle", () => requestAnimationFrame(resizeActivePlots));
+});
+
 // ---------- nav ----------
 // Every tab fills the viewport with no page scroll (see .fill in style.css),
 // so any layout change needs an explicit Plotly resize() - it doesn't watch
@@ -1134,6 +1138,7 @@ fetch("data/dynamics.json")
   .catch(() => {
     document.getElementById("dynamics-caveat").textContent =
       "data/dynamics.json not found. Run `uv run python -m io_analysis.dynamics` first.";
+    document.getElementById("dynamics-info").open = true;
   });
 
 // ---------- View 6: Anatomy (whole connectome, real soma positions) ----------
