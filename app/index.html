@@ -132,8 +132,21 @@
     </div>
 
     <figure class="start-anim">
-      <canvas id="start-flow-anim" role="img" aria-label="1,732 real neurons from this dataset at their measured soma positions, colored by role and shaped like the fly's brain and nerve cord. Waves of activation spread from one sense at a time, in the order given by the wiring."></canvas>
-      <figcaption id="start-anim-caption"><strong id="start-anim-wave">Vision</strong> input spreading through the wiring. Each dot is a real neuron at its measured position; the order comes from connectivity analysis, not recorded activity. <a href="#" data-jump="mlprimer">How it's computed</a></figcaption>
+      <canvas id="start-flow-anim" role="img" aria-label="1,732 real neurons from this dataset in an XY projection of measured soma positions, with extreme coordinates clipped for display, colored by role. Neurons light up in steps of a wiring-based ordering that starts from one sense at a time."></canvas>
+      <figcaption id="start-anim-caption">
+        <span class="start-anim-status"><strong id="start-anim-wave">Vision</strong> · step <span id="start-anim-step">0</span> of <span id="start-anim-steps">11</span></span>
+        <span class="start-anim-note">Each dot is a real neuron projected from its measured position, with extreme coordinates clipped for display. It lights up at the step where enough of its input comes from already-lit neurons: an ordering by wiring, not recorded activity or timing.<span id="start-anim-origin"></span></span>
+      </figcaption>
+      <details class="info-disclosure start-anim-method">
+        <summary>How the order is computed</summary>
+        <div class="info-box">
+          <p><strong>Step 0:</strong> every sensory neuron of one sense (for Vision, all 4,107 visual sensory neurons in the dataset).</p>
+          <p><strong>Each next step:</strong> a neuron lights up once at least 10% of its incoming synapses come from neurons lit in earlier steps. This repeats until nothing new lights up, after 9 to 11 steps. Every neuron drawn here is reached.</p>
+          <p><strong>What the animation shows is only the step number.</strong> The pause between steps and the small stagger inside a step (a fixed per-neuron offset of at most 0.2 s, so a step doesn't flash all at once) are visual choices and carry no information.</p>
+          <p><strong>What the method ignores:</strong> whether a synapse excites or inhibits (an inhibitory input counts as reaching the neuron), effective synaptic strength beyond the synapse count, delays, firing thresholds and the fly's state. It orders neurons by how directly the wiring connects them to a sense; it is not a simulation of activity.</p>
+          <p>The same method, with a 20% threshold and all senses at once, gives the traversal layers on the <a href="#" data-jump="mlprimer">Wiring to Computation</a> tab. The 1,732 neurons are a fixed sample of the 140,024 with a recorded position, drawn per role. Coordinates are projected onto XY with equal scale, clipped on each axis to the sample's 0.5–99.5 percentile range, and rounded for display. A sense with no sensory neurons in the displayed sample first appears at downstream neurons; this does not imply its receptors are absent from the dataset.</p>
+        </div>
+      </details>
     </figure>
 
     <div class="start-grid">

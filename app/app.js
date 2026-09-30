@@ -1435,16 +1435,34 @@ function initStartAnimation(d) {
     ctx.globalAlpha = 1;
   }
 
+  const origin = document.getElementById("start-anim-origin");
+  const stepEl = document.getElementById("start-anim-step");
+  const stepsEl = document.getElementById("start-anim-steps");
   function setCaption(waveIdx) {
-    if (caption) caption.textContent = d.waves[waveIdx].label;
+    const w = d.waves[waveIdx];
+    if (caption) caption.textContent = w.label;
+    if (stepsEl) stepsEl.textContent = w.max_layer;
+    const seedCount = w.sampled_seed_count ?? w.layer.filter(layer => layer === 0).length;
+    if (origin) origin.textContent = seedCount === 0
+      ? ` No sensory neurons for ${w.label.toLowerCase()} are shown in this sample; the wave first appears at downstream neurons.`
+      : ` ${seedCount} sensory neuron${seedCount === 1 ? "" : "s"} for ${w.label.toLowerCase()} ${seedCount === 1 ? "is" : "are"} shown at step 0.`;
+  }
+  let shownStep = -1;
+  function setStep(tMs, waveIdx) {
+    const step = Math.max(0, Math.min(d.waves[waveIdx].max_layer, Math.floor(tMs / START_ANIM.stepMs)));
+    if (step !== shownStep && stepEl) { shownStep = step; stepEl.textContent = step; }
   }
 
   const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   // Static frame: the vision wave caught mid-way through the brain.
   const staticT = 4 * START_ANIM.stepMs + START_ANIM.jitterMs / 2;
+  // ResizeObserver also fires when a hidden Start Here view becomes visible
+  // (0 -> real width); a window resize listener alone would miss that.
+  const resized = () => { size(); if (reduced && cssW > 0) draw(staticT, 0); };
   size();
-  window.addEventListener("resize", () => { size(); if (reduced) draw(staticT, 0); });
-  if (reduced) { setCaption(0); draw(staticT, 0); return; }
+  if (window.ResizeObserver) new ResizeObserver(resized).observe(canvas);
+  else window.addEventListener("resize", resized);
+  if (reduced) { setCaption(0); setStep(staticT, 0); resized(); return; }
 
   let t0 = null, shownWave = -1;
   function frame(now) {
@@ -1454,7 +1472,8 @@ function initStartAnimation(d) {
     if (t0 === null) t0 = now - (shownWave > 0 ? waveMs.slice(0, shownWave).reduce((a, b) => a + b, 0) : 0);
     let t = (now - t0) % cycleMs, w = 0;
     while (t >= waveMs[w]) { t -= waveMs[w]; w++; }
-    if (w !== shownWave) { shownWave = w; setCaption(w); }
+    if (w !== shownWave) { shownWave = w; shownStep = -1; setCaption(w); }
+    setStep(t, w);
     draw(t, w);
   }
   requestAnimationFrame(frame);
@@ -1464,8 +1483,8 @@ fetch("data/start_animation.json")
   .then((r) => r.json())
   .then(initStartAnimation)
   .catch(() => {
-    const note = document.getElementById("start-anim-caption");
-    if (note) note.hidden = true;
+    const figure = document.querySelector(".start-anim");
+    if (figure) figure.hidden = true;
   });
 
 fetch("data/positions.json")

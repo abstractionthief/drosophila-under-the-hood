@@ -98,6 +98,30 @@ function pathway(input, output, bodyid = 42) {
   };
 }
 
+for (const modality of ['vision', 'olfaction', 'proprioception']) {
+  test(`Start Here caption describes the displayed ${modality} seeds`, () => {
+    const a = app();
+    const data = JSON.parse(fs.readFileSync(path.join(__dirname, '../app/data/start_animation.json'), 'utf8'));
+    const wave = data.waves.find(w => w.modality === modality);
+    const canvas = a.get('start-flow-anim');
+    canvas.getContext = () => ({ setTransform() {} });
+    canvas.clientWidth = 0; // No layout in this harness; exercise the real caption path.
+    canvas.clientHeight = 0;
+    a.context.window.matchMedia = () => ({ matches: true });
+    a.context.initStartAnimation({ ...data, waves: [wave] });
+    const caption = a.get('start-anim-origin').textContent;
+    const seeds = wave.layer.filter(layer => layer === 0).length;
+    if (seeds === 0) {
+      assert.match(caption, /No sensory neurons .* shown in this sample/);
+      assert.match(caption, /downstream neurons/);
+    } else {
+      assert.ok(caption.includes(`${seeds} sensory neurons`));
+      assert.match(caption, /shown at step 0/);
+    }
+    assert.doesNotMatch(caption, /no recorded position/);
+  });
+}
+
 test('the latest pathway selection wins when responses arrive out of order', async () => {
   const a = app();
   const first = a.context.loadPathway('olfaction', 'front_leg');

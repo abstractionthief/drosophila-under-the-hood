@@ -33,8 +33,9 @@ WAVES = [
     ("gustation", "Taste"),
     ("proprioception", "Body position"),
 ]
-# Share of the sample per role; small but behaviourally central populations
-# get more than their census share so they stay visible.
+# Per-role cap on the sample; small but behaviourally central populations
+# get more than their census share so they stay visible. sensory_input is
+# a cap, not a guarantee: only receptors with a mapped soma can be drawn.
 ROLE_QUOTA = {
     "optic_processing": 820,
     "central_processing": 420,
@@ -90,6 +91,9 @@ def build() -> dict:
     edges = load_edges()
     src = np.searchsorted(ids, edges["source"].to_numpy())
     dst = np.searchsorted(ids, edges["target"].to_numpy())
+    for indices, column in ((src, "source"), (dst, "target")):
+        if np.any(indices >= ids.size) or not np.array_equal(ids[indices], edges[column].to_numpy()):
+            raise ValueError("An edge endpoint is not a Traced neuron in the current census.")
     incoming = sp.csr_matrix((edges["weight"].to_numpy().astype(np.int64), (dst, src)), shape=(ids.size, ids.size))
     del edges, src, dst
 
@@ -110,6 +114,9 @@ def build() -> dict:
         waves.append({
             "modality": modality, "label": label,
             "seed_count": int(seeds.sum()),
+            # Most receptor somas lie outside the positioned CNS, so this is
+            # often 0: the app then says the wave appears at the first targets.
+            "sampled_seed_count": int(seeds[sample].sum()),
             "max_layer": int(layers.max()),
             "layer": layers[sample].tolist(),
         })
@@ -128,7 +135,8 @@ def build() -> dict:
         "waves": waves,
         "note": (
             f"Deterministic sample of {sample.size} traced neurons with a soma position, "
-            "drawn at real X-Y coordinates. Each wave orders neurons by an input-fraction "
+            "projected from measured X-Y coordinates, with each axis clipped to the sample's "
+            "0.5–99.5 percentile range and rounded for display. Each wave orders neurons by an input-fraction "
             f"traversal from one sensory modality (a neuron joins once earlier layers supply "
             f">= {THRESHOLD_PERCENT}% of its input synapses). This ordering is anatomical, not "
             "recorded activity or physiological timing."
@@ -143,8 +151,8 @@ def main() -> None:
     print(f"Exported {payload['n']} neurons x {len(payload['waves'])} waves -> {OUT_PATH.relative_to(PROJECT_ROOT)}")
     for w in payload["waves"]:
         layers = np.array(w["layer"])
-        print(f"  {w['label']:<14} seeds {w['seed_count']:>5}  max layer {w['max_layer']:>2}  "
-              f"sampled unreached {(layers < 0).sum()}")
+        print(f"  {w['label']:<14} seeds {w['seed_count']:>5} (sampled {w['sampled_seed_count']:>3})  "
+              f"max layer {w['max_layer']:>2}  sampled unreached {(layers < 0).sum()}")
 
 
 if __name__ == "__main__":

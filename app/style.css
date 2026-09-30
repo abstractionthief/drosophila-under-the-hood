@@ -451,6 +451,13 @@ main {
   text-align: center;
 }
 .start-anim figcaption strong { color: var(--text); font-weight: 500; }
+.start-anim-status { display: block; font-size: 13px; color: var(--text); font-variant-numeric: tabular-nums; }
+.start-anim-note { display: block; margin-top: 2px; }
+.start-anim-method { max-width: 640px; margin: 4px auto 0 auto; text-align: left; }
+.start-anim-method summary { margin: 0 auto; }
+.start-anim-method .info-box { display: block; max-height: none; }
+.start-anim-method p { margin: 0 0 8px 0; }
+.start-anim-method a { color: var(--accent); text-decoration: underline; }
 .start-anim figcaption a { color: var(--accent); text-decoration: underline; }
 
 .start-grid {
