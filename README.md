@@ -9,7 +9,7 @@ neurons (84.8% of all 165,122) with a recorded soma position.
 See [`docs/project_overview.md`](docs/project_overview.md) for the full
 architecture and biological narrative.
 
-The app's **ML Primer** introduces activity, recurrent computation and
+The app's **Wiring to Computation** view introduces activity, recurrent computation and
 controlled experiments. Its [longer cheat sheet](docs/ml_cheat_sheet.md)
 includes modelling assumptions, sources and reproducible graph statistics.
 

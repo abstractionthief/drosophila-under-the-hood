@@ -188,9 +188,9 @@
         "sha256": "8ce7e76f8a44dfc2ef1448383c1bfe7ae61b2548411b4ac94a19069b3a2ec8d1"
       },
       {
-        "bytes": 12928,
+        "bytes": 13140,
         "path": "src/io_analysis/primer_stats.py",
-        "sha256": "1acedde9f975fa658b4eb29446f743e9912406ebd1d20810d2c1e286577f9689"
+        "sha256": "3722d8ceff03aacea72fda3bf3b91c9e8bb40588bf2548637fb99210957458f8"
       }
     ]
   },

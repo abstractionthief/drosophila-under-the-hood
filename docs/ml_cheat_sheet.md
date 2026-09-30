@@ -6,7 +6,7 @@ MaleCNS provides a large, incomplete reconstruction of chemical wiring
 from one fly, with synapse counts and cell annotations. It does not supply
 a ready-to-run neural network with known physiological parameters.
 
-In the app, **Start Here** explains the dataset and the views. **ML Primer**
+In the app, **Start Here** explains the dataset and the views. **Wiring to Computation**
 introduces state, dynamics and computational motifs. This document is the
 longer reference: model assumptions, reproducible graph statistics and
 ways to test an interpretation. For the pipeline see

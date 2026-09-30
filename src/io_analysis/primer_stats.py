@@ -1,4 +1,4 @@
-"""Reproduce the ML Primer's descriptive statistics, without a dynamics model.
+"""Reproduce the Wiring to Computation view's descriptive statistics, without a dynamics model.
 
 Run: .venv/bin/python -m io_analysis.primer_stats
 Output: data/ml_primer_stats.json (deterministic for identical inputs/code/env).

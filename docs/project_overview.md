@@ -176,7 +176,7 @@ pairs with very different neuron counts without normalizing first.
 
 ## 6. Exploring it yourself
 
-Start with **Start Here** for dataset scope and navigation, then **ML Primer**
+Start with **Start Here** for dataset scope and navigation, then **Wiring to Computation**
 for the distinction between wiring, activity and learning. Its longer
 [ML cheat sheet](ml_cheat_sheet.md) includes an example dynamics model,
 source-linked circuit analogies and reproducible graph statistics.

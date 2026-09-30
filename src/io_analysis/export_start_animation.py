@@ -5,8 +5,8 @@ modality reaches it.
 Run: uv run python -m io_analysis.export_start_animation
 Output: app/data/start_animation.json (deterministic for identical inputs).
 
-Layers come from the same deterministic input-fraction traversal as the ML
-Primer statistics (primer_stats.traversal_layers), seeded with one modality's
+Layers come from the same deterministic input-fraction traversal as the
+Wiring to Computation statistics (primer_stats.traversal_layers), seeded with one modality's
 sensory neurons at a time. They order neurons by anatomical input, not by
 measured activity or physiological time.
 """

@@ -470,7 +470,7 @@ main {
   .start-grid { grid-template-columns: 1fr; }
 }
 
-/* ---------- ML Primer ---------- */
+/* ---------- Wiring to Computation ---------- */
 
 .ml-stats {
   display: grid;
