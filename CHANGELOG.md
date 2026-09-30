@@ -1,6 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.1.0 — 2026-09-30
+
+Adds an ML-oriented bridge from wiring to computation and a data-driven
+Start Here animation. Source dataset and classification rules are unchanged.
 
 - Wiring to Computation onboarding with modelling assumptions, conceptual
   schematics, a guided DNb05 pathway example, and an extended ML cheat sheet.

@@ -173,8 +173,7 @@ If you use or build on this data, cite:
 Accessed via [neuPrint](https://neuprint.janelia.org) through the
 [`malecns`](https://github.com/natverse/malecns) R package.
 
-Latest tagged release: **1.0.0**. The current branch also includes
-[unreleased changes](CHANGELOG.md#unreleased).
+Project release: **1.1.0** — see [release notes](CHANGELOG.md).
 The project version is independent of the source dataset version
 (`male-cns:v1.0`) and the classification rule version recorded in exports.
 
