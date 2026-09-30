@@ -504,10 +504,6 @@ main {
 .ml-section > p, .ml-model p { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; margin: 8px 0; }
 .ml-section p strong { color: var(--text); }
 .ml-dynamics { padding: 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
-.ml-flow { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; padding: 10px 0; font-size: 14px; }
-.ml-flow-inputs { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; }
-.ml-flow-inputs > span:not([aria-hidden]), .ml-flow > strong { padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; }
-.ml-flow > strong { border-color: var(--text); font-weight: 500; }
 .ml-model { margin-top: 12px; font-size: 12.5px; }
 .ml-model summary { cursor: pointer; width: fit-content; }
 .ml-equation { display: block; overflow-x: auto; white-space: nowrap; padding: 12px 0 4px; }
@@ -545,6 +541,42 @@ main {
 .ml-list li { font-size: 12.5px; color: var(--text-dim); line-height: 1.6; margin-bottom: 8px; }
 .ml-list li strong { color: var(--text); }
 #view-mlprimer a { color: var(--accent); text-decoration: underline; }
+/* Conceptual schematics: grey = wiring, --ink = example activity. */
+.concept-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.concept-heading h3 { margin: 0; font-size: 13.5px; }
+.concept-heading span { font-size: 11px; color: var(--text-dim); }
+.concept-svg { display: block; width: 100%; height: auto; overflow: visible; --ink: #168575; --wash: #e8f5f1; color: var(--text-dim); }
+html[data-theme="dark"] .concept-svg { --ink: #66cfba; --wash: #17342e; }
+.concept-svg .wire, .concept-svg .faint, .concept-svg .signal { fill: none; stroke: var(--text-dim); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.concept-svg .faint { opacity: 0.25; }
+.concept-svg .signal { stroke: var(--ink); stroke-width: 1.8; }
+.concept-svg .signal-head { color: var(--ink); }
+.update-desktop .arrow { marker-end: url(#ml-arrow); }
+.update-desktop .signal.arrow { marker-end: url(#ml-arrow-signal); }
+.update-mobile .arrow { marker-end: url(#ml-arrow-m); }
+.update-mobile .signal.arrow { marker-end: url(#ml-arrow-signal-m); }
+.concept-svg .node, .concept-svg .box { fill: var(--surface); stroke: var(--text-dim); stroke-width: 1.3; }
+.concept-svg .on { fill: var(--ink); stroke: var(--ink); }
+.concept-svg .patch, .concept-svg .active-box { fill: var(--wash); stroke: var(--ink); stroke-width: 1.2; }
+.concept-svg text { font-family: inherit; fill: var(--text-dim); font-size: 10px; }
+.concept-svg .main-label { font-size: 12px; fill: var(--text); }
+.concept-svg .signal-label { fill: var(--ink); }
+.ml-cards .concept-svg { margin: 0 0 18px; }
+.ml-cards .start-col { padding: 18px; }
+.ml-cards h3 { margin-bottom: 10px; }
+.update-diagrams { max-width: 820px; margin: 10px auto 0; }
+.update-mobile { display: none; }
+.sparse-legend { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 10px; color: var(--text-dim); margin: -8px 0 12px; }
+.sparse-legend span:last-child { color: #168575; }
+html[data-theme="dark"] .sparse-legend span:last-child { color: #66cfba; }
+@media (max-width: 700px) {
+  .update-desktop { display: none; }
+  .update-mobile { display: block; max-width: 360px; margin: auto; }
+}
+@media (max-width: 600px) {
+  .concept-heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .ml-cards .concept-svg { max-width: 350px; margin-left: auto; margin-right: auto; }
+}
 @media (max-width: 900px) {
   .ml-stats { grid-template-columns: repeat(2, 1fr); }
 }
@@ -552,8 +584,6 @@ main {
   .logo-mini img { width: 44px; height: 44px; }
   .ml-stats { grid-template-columns: 1fr; }
   .ml-table td:first-child { white-space: normal; }
-  .ml-flow { flex-direction: column; gap: 8px; }
-  .ml-flow-arrow { transform: rotate(90deg); }
 }
 
 /* ---------- pathway explorer ---------- */
