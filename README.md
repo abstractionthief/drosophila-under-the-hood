@@ -71,6 +71,8 @@ uv run python -m io_analysis.graph
 uv run python -m io_analysis.dynamics
 uv run python -m io_analysis.export_positions
 uv run python -m io_analysis.export_app_data
+uv run python -m io_analysis.export_start_animation
+uv run python -m io_analysis.primer_stats
 
 # 3. Global search + per-neuron 3D morphology (needs app/data/pathways/
 # from export_app_data above; the R step needs data/skeleton_bodyids.csv

@@ -430,33 +430,28 @@ main {
 .start-hero h2 { font-size: 24px; font-weight: 500; margin: 0 0 8px 0; letter-spacing: -0.01em; }
 .start-sub { font-size: 13.5px; color: var(--text-dim); line-height: 1.6; margin: 0; }
 
+/* Canvas colors come from IO_ROLE_COLORS in app.js (same as the Anatomy tab);
+   aspect-ratio is set from the exported data. */
+.start-anim {
+  width: 100%;
+  max-width: 640px;
+  margin: 4px auto 14px auto;
+  flex: 0 0 auto;
+}
 #start-flow-anim {
   display: block;
   width: 100%;
-  max-width: 640px;
-  height: auto;
-  margin: 4px auto 10px auto;
-  flex: 0 0 auto;
+  aspect-ratio: 1.5;
 }
-/* Same palette as IO_ROLE_COLORS in app.js (Anatomy tab) - this is what
-   actually makes the scatter read as a fly: optic lobes/central brain/VNC
-   need to stay visually distinct, not collapsed into one blob. */
-.fly-dots .fp-optic { fill: #e67e22; opacity: 0.6; }
-.fly-dots .fp-central { fill: #1565c0; opacity: 0.6; }
-.fly-dots .fp-vnc { fill: #6a1b9a; opacity: 0.65; }
-.fly-dots .fp-asc { fill: #00897b; opacity: 0.7; }
-.fly-dots .fp-desc { fill: #ef6c00; opacity: 0.7; }
-.fly-dots .fp-motor { fill: #c62828; opacity: 0.85; }
-.fly-dots .fp-endo { fill: #ad1457; opacity: 0.85; }
-.fly-dots .fp-oeff { fill: #795548; opacity: 0.85; }
-.fly-dots .fp-input { fill: #2e7d32; opacity: 0.95; }
-.fly-dots .fp-unknown { fill: #9e9e9e; opacity: 0.4; }
-.flow-pulses .pulse-a { fill: #2e7d32; }
-.flow-pulses .pulse-b { fill: #c62828; }
-@media (prefers-reduced-motion: reduce) {
-  #start-flow-anim animate { display: none; }
-  .flow-pulses circle { opacity: 0; }
+.start-anim figcaption {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  text-align: center;
 }
+.start-anim figcaption strong { color: var(--text); font-weight: 500; }
+.start-anim figcaption a { color: var(--accent); text-decoration: underline; }
 
 .start-grid {
   display: grid;

@@ -1354,6 +1354,120 @@ function renderAnatomy3D() {
   );
 }
 
+// ---------- Start Here: activation-wave animation ----------
+// Real neurons at their soma X-Y positions. Each wave lights them up in the
+// order of an input-fraction traversal from one sensory modality (see
+// export_start_animation.py): anatomical ordering, not recorded activity.
+
+const START_ANIM = {
+  stepMs: 320,       // time between traversal layers
+  jitterMs: 200,     // per-neuron spread within a layer, so layers don't strobe
+  riseMs: 70,
+  decayMs: 600,
+  holdMs: 1300,      // quiet gap after a wave before the next one starts
+  ringMs: 900,
+  baseAlpha: 0.16,
+};
+
+function startAnimPulse(dt) {
+  if (dt < 0) return 0;
+  if (dt < START_ANIM.riseMs) return dt / START_ANIM.riseMs;
+  return Math.exp(-(dt - START_ANIM.riseMs) / START_ANIM.decayMs);
+}
+
+function initStartAnimation(d) {
+  const canvas = document.getElementById("start-flow-anim");
+  const caption = document.getElementById("start-anim-wave");
+  if (!canvas || !canvas.getContext) return;
+  const ctx = canvas.getContext("2d");
+  const view = document.getElementById("view-start");
+  canvas.style.aspectRatio = String(d.aspect);
+
+  const colors = d.role.map((r) => IO_ROLE_COLORS[d.role_names[r]] || IO_ROLE_COLORS.unknown);
+  // Deterministic per-neuron jitter (golden-ratio hash), stable across waves.
+  const jitter = d.bodyid.map((b, i) => ((i * 0.6180339887) % 1) * START_ANIM.jitterMs);
+  const accent = new Set(d.accent_bodyids);
+  const waveMs = d.waves.map((w) => (w.max_layer + 1) * START_ANIM.stepMs + START_ANIM.jitterMs + START_ANIM.decayMs * 3 + START_ANIM.holdMs);
+  const cycleMs = waveMs.reduce((a, b) => a + b, 0);
+
+  let cssW = 0, cssH = 0;
+  function size() {
+    const dpr = window.devicePixelRatio || 1;
+    cssW = canvas.clientWidth;
+    cssH = canvas.clientHeight;
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function draw(tMs, waveIdx) {
+    const wave = d.waves[waveIdx];
+    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+    const r0 = Math.max(1, cssW / 520);
+    // Coordinates span 0..1000 on the wider axis; keep a margin so halos
+    // and the accent ring aren't clipped at the canvas edge.
+    const pad = r0 * 5;
+    const px = Math.min((cssW - 2 * pad) / 1000, (cssH - 2 * pad) / (1000 / d.aspect));
+    const ox = (cssW - 1000 * px) / 2, oy = (cssH - (1000 / d.aspect) * px) / 2;
+    ctx.clearRect(0, 0, cssW, cssH);
+    for (let i = 0; i < d.n; i++) {
+      const x = ox + d.x[i] * px, y = oy + d.y[i] * px;
+      const layer = wave.layer[i];
+      const a = layer < 0 ? 0 : startAnimPulse(tMs - layer * START_ANIM.stepMs - jitter[i]);
+      ctx.fillStyle = colors[i];
+      if (a > 0.04) {
+        ctx.globalAlpha = a * (dark ? 0.35 : 0.22);
+        ctx.beginPath(); ctx.arc(x, y, r0 * (2 + 2.5 * a), 0, 2 * Math.PI); ctx.fill();
+      }
+      ctx.globalAlpha = START_ANIM.baseAlpha + (1 - START_ANIM.baseAlpha) * a;
+      ctx.beginPath(); ctx.arc(x, y, r0 * (1 + 0.8 * a), 0, 2 * Math.PI); ctx.fill();
+      if (accent.has(d.bodyid[i]) && layer >= 0) {
+        const dt = tMs - layer * START_ANIM.stepMs - jitter[i];
+        if (dt >= 0 && dt < START_ANIM.ringMs) {
+          const p = dt / START_ANIM.ringMs;
+          ctx.globalAlpha = 0.8 * (1 - p);
+          ctx.strokeStyle = colors[i];
+          ctx.lineWidth = 1.2;
+          ctx.beginPath(); ctx.arc(x, y, r0 * (2 + 14 * p), 0, 2 * Math.PI); ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function setCaption(waveIdx) {
+    if (caption) caption.textContent = d.waves[waveIdx].label;
+  }
+
+  const reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  // Static frame: the vision wave caught mid-way through the brain.
+  const staticT = 4 * START_ANIM.stepMs + START_ANIM.jitterMs / 2;
+  size();
+  window.addEventListener("resize", () => { size(); if (reduced) draw(staticT, 0); });
+  if (reduced) { setCaption(0); draw(staticT, 0); return; }
+
+  let t0 = null, shownWave = -1;
+  function frame(now) {
+    requestAnimationFrame(frame);
+    if (!view.classList.contains("active") || document.hidden) { t0 = null; return; }
+    if (canvas.clientWidth !== cssW) size();
+    if (t0 === null) t0 = now - (shownWave > 0 ? waveMs.slice(0, shownWave).reduce((a, b) => a + b, 0) : 0);
+    let t = (now - t0) % cycleMs, w = 0;
+    while (t >= waveMs[w]) { t -= waveMs[w]; w++; }
+    if (w !== shownWave) { shownWave = w; setCaption(w); }
+    draw(t, w);
+  }
+  requestAnimationFrame(frame);
+}
+
+fetch("data/start_animation.json")
+  .then((r) => r.json())
+  .then(initStartAnimation)
+  .catch(() => {
+    const note = document.getElementById("start-anim-caption");
+    if (note) note.hidden = true;
+  });
+
 fetch("data/positions.json")
   .then((r) => r.json())
   .then((d) => {
