@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+- Wiring to Computation onboarding with modelling assumptions, conceptual
+  schematics, a guided DNb05 pathway example, and an extended ML cheat sheet.
+- Reproducible connectome statistics and input-fraction traversal layers.
+- Start Here animation using sampled soma positions and modality-specific
+  traversal layers, with step counters and explicit interpretation limits.
+- Regression coverage for traversal layers, animation edge validation and
+  seed counts, animation captions, and the guided pathway link.
+- README quick start, live demo link, first-exploration guide, and a
+  Pathway Explorer screenshot.
+
 ## 1.0.0 — 2026-09-24
 
 First stable release of Drosophila Under the Hood, a data engineering and
