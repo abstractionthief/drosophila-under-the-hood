@@ -209,7 +209,15 @@ function showView(name) {
 
 document.querySelectorAll("a[data-jump]").forEach((a) => {
   a.addEventListener("click", (e) => {
+    // Keep the example's real URL usable in a new tab as well.
+    if (a.dataset.pathway && (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) return;
     e.preventDefault();
+    if (a.dataset.pathway) {
+      const [inputCat, outputCat] = a.dataset.pathway.split("__");
+      const bodyid = a.dataset.bodyid ? Number(a.dataset.bodyid) : undefined;
+      loadPathway(inputCat, outputCat, bodyid, a.dataset.jump);
+      return;
+    }
     showView(a.dataset.jump);
   });
 });

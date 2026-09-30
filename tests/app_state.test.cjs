@@ -8,6 +8,7 @@ const test = require('node:test');
 const vm = require('node:vm');
 
 const source = fs.readFileSync(path.join(__dirname, '../app/app.js'), 'utf8');
+const html = fs.readFileSync(path.join(__dirname, '../app/index.html'), 'utf8');
 
 function element() {
   const classes = new Set();
@@ -24,7 +25,7 @@ function element() {
       contains: value => classes.has(value),
     },
     addEventListener: (name, callback) => { listeners[name] = callback; },
-    click() { listeners.click?.({ currentTarget: this }); },
+    click(event = {}) { listeners.click?.({ currentTarget: this, preventDefault() {}, ...event }); },
     querySelectorAll: () => [],
     setAttribute() {}, getAttribute() { return null; },
     getBoundingClientRect: () => ({ left: 0, height: 46 }),
@@ -37,8 +38,13 @@ function app(search = '') {
     if (!elements.has(id)) elements.set(id, element());
     return elements.get(id);
   };
-  const views = ['start', 'overview', 'matrix', 'pathway', 'detail', 'dynamics', 'anatomy', 'anatomy3d'];
+  const views = ['start', 'mlprimer', 'overview', 'matrix', 'pathway', 'detail', 'dynamics', 'anatomy', 'anatomy3d'];
   const buttons = views.map(view => Object.assign(element(), { dataset: { view } }));
+  const jumpLinks = [...html.matchAll(/<a\b[^>]*\bdata-jump="[^"]+"[^>]*>/g)].map(([tag]) => {
+    const dataset = Object.fromEntries([...tag.matchAll(/data-([\w-]+)="([^"]*)"/g)]
+      .map(([, key, value]) => [key, value]));
+    return Object.assign(element(), { dataset });
+  });
   buttons[0].classList.add('active');
   const pending = new Map();
   const alerts = [], purged = [], plots = [];
@@ -60,6 +66,7 @@ function app(search = '') {
       querySelectorAll(selector) {
         if (selector === 'nav button') return buttons;
         if (selector === '.view') return views.map(v => get('view-' + v));
+        if (selector === 'a[data-jump]') return jumpLinks;
         return [];
       },
     },
@@ -76,7 +83,7 @@ function app(search = '') {
   vm.runInContext(source, context);
   vm.runInContext('initFilters = () => {}; renderPathwayGraph = () => {}; renderPathsTable = () => {};', context);
   return {
-    context, get, alerts, purged, plots,
+    context, get, alerts, purged, plots, jumpLinks,
     request: url => pending.get(url)?.shift(),
     evaluate: code => vm.runInContext(code, context),
     activeView: () => buttons.find(b => b.classList.contains('active')).dataset.view,
@@ -141,7 +148,7 @@ test('changing pathways clears details and rejects an old morphology response', 
   assert.deepEqual(a.plots, []);
 });
 
-for (const view of ['overview', 'pathway', 'detail']) {
+for (const view of ['overview', 'pathway', 'detail', 'mlprimer']) {
   test(`a deep link restores ${view} even with a pathway and selected neuron`, async () => {
     const a = app(`?view=${view}&pathway=olfaction__front_leg&bodyid=42`);
     a.request('data/pathways/olfaction__front_leg.json').resolve(pathway('olfaction', 'front_leg'));
@@ -150,6 +157,28 @@ for (const view of ['overview', 'pathway', 'detail']) {
     assert.equal(a.evaluate('lastSelectedBodyid'), 42);
   });
 }
+
+test('the primer example opens its pathway and selected neuron without switching to detail', async () => {
+  const a = app();
+  a.context.showView('mlprimer');
+  const link = a.jumpLinks.find(link => link.dataset.pathway === 'olfaction__front_leg');
+  assert.ok(link, 'the example link is present in the real page');
+  link.click();
+  a.request('data/pathways/olfaction__front_leg.json').resolve(pathway('olfaction', 'front_leg', 10065));
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(a.activeView(), 'pathway');
+  assert.equal(a.get('pathway-select').value, 'olfaction__front_leg');
+  assert.equal(a.evaluate('lastSelectedBodyid'), 10065);
+});
+
+test('a modified click on the primer example preserves its native deep link', () => {
+  const a = app();
+  const link = a.jumpLinks.find(link => link.dataset.pathway === 'olfaction__front_leg');
+  for (const modifier of ['metaKey', 'ctrlKey', 'shiftKey', 'altKey']) {
+    link.click({ [modifier]: true, preventDefault() { assert.fail('modified click was intercepted'); } });
+    assert.equal(a.request('data/pathways/olfaction__front_leg.json'), undefined);
+  }
+});
 
 for (const success of [true, false]) {
   test(`a pending search refreshes when the index ${success ? 'loads' : 'fails'}`, async () => {

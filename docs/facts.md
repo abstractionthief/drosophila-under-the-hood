@@ -79,10 +79,12 @@ and the whole-brain FlyWire connectome.
   to cells in a different brain than to any other cell in their own
   brain**. Cell type, in other words, is defined by matching across
   individuals, not by clustering within one.
-- **Connection strength predicts conservation**: connections stronger than
-  ~10 unitary synapses, or providing >1% of a target cell's total input,
-  are highly conserved between individuals. Weaker connections vary much
-  more from fly to fly.
+- **Connection strength predicts conservation at the cell-type level**:
+  edges aggregated between matched cell types with more than ~10 synapses,
+  or providing >1% of a target type's total input, are highly conserved
+  between individuals. This does not establish a noise threshold for
+  individual neuron-to-neuron edges; variability alone does not imply
+  that a connection lacks function.
 - **Concrete example of real variability**: Kenyon cells (the mushroom
   body's learning/memory neurons) are **about 30% more numerous per
   hemisphere in FlyWire than in hemibrain** (2,597 right / 2,580 left in
@@ -98,8 +100,8 @@ and the whole-brain FlyWire connectome.
 1. *Attachment completeness* (94%/42% for MaleCNS) = how many detected
    synaptic sites were attached to proofread neuron segments. It does not
    measure recovery of all of **one individual's** actual synapses.
-2. *Cross-individual conservation* (~2/3 of cell types, connections
-   >10 synapses) = how much **one individual's wiring generalizes** to
+2. *Cross-individual conservation* (~2/3 of cell types, aggregated type-to-type
+   connections >10 synapses) = how much **one individual's wiring generalizes** to
    flies as a class. A biological variability question - real, documented,
    and distinct from #1.
 

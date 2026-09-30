@@ -1,0 +1,467 @@
+{
+  "definitions": {
+    "classification": "Current build_classification(nodes); DN means io_role == descending; motor means motor_output (includes cb_motor and vnc_motor).",
+    "descending_ratio": "No brain-neuron/DN ratio reported: a count ratio would not establish bandwidth, exclusive routing through DN, or a functional bottleneck.",
+    "edges": "Unique directed Traced-to-Traced chemical connections with weight >= 1; weight is reported synapse count. Autapses retained unless a metric explicitly excludes them.",
+    "input_shares": "Source io_role synapse counts onto every target in the stated target io_role, divided by all recorded input synapses to that target population. No roles omitted.",
+    "nt_shares": "Sum of outgoing synapse counts by source consensusNt, divided by all synapse counts; these are NT-label shares, not measured excitation/inhibition.",
+    "population": "All and only census rows with status == Traced, including isolated neurons.",
+    "reciprocity": "Fraction of nonself directed edges whose reverse edge is present; a reciprocal pair contributes two directed edges.",
+    "traversal": "Seeds are layer 0. Synchronously add each previously unreached neuron when cumulative synapse count from all earlier layers / total recorded input synapse count >= threshold. Iterate to fixed point; zero-input nonseeds remain unreached. This deterministic closure is not a physiological simulation or the stochastic traversal in Schlegel et al. 2021.",
+    "traversal_medians": "Main population is nonseed_neurons: exclude sensory seeds, and calculate median only among reached neurons. Report unreached counts separately. Role medians likewise use reached members of that role. Layers are algorithmic, not measured processing depth/time.",
+    "type_count": "Unique non-null raw type annotations, not an independently validated biological type taxonomy."
+  },
+  "input_fraction_traversal": [
+    {
+      "all_neurons_including_seeds": {
+        "deepest_reached_layer": 6,
+        "median_layer_among_reached": 3.0,
+        "population_count": 165122,
+        "reached_count": 164699,
+        "unreached_count": 423
+      },
+      "descending_neurons": {
+        "deepest_reached_layer": 4,
+        "median_layer_among_reached": 2.0,
+        "population_count": 1314,
+        "reached_count": 1314,
+        "unreached_count": 0
+      },
+      "layer_counts_including_seeds": [
+        15896,
+        13913,
+        38754,
+        54252,
+        34083,
+        7640,
+        161
+      ],
+      "motor_neurons": {
+        "deepest_reached_layer": 3,
+        "median_layer_among_reached": 2.0,
+        "population_count": 815,
+        "reached_count": 815,
+        "unreached_count": 0
+      },
+      "nonseed_neurons": {
+        "deepest_reached_layer": 6,
+        "median_layer_among_reached": 3.0,
+        "population_count": 149226,
+        "reached_count": 148803,
+        "unreached_count": 423
+      },
+      "threshold_percent": 10
+    },
+    {
+      "all_neurons_including_seeds": {
+        "deepest_reached_layer": 10,
+        "median_layer_among_reached": 4.0,
+        "population_count": 165122,
+        "reached_count": 164699,
+        "unreached_count": 423
+      },
+      "descending_neurons": {
+        "deepest_reached_layer": 5,
+        "median_layer_among_reached": 3.0,
+        "population_count": 1314,
+        "reached_count": 1314,
+        "unreached_count": 0
+      },
+      "layer_counts_including_seeds": [
+        15896,
+        7788,
+        19497,
+        26703,
+        23933,
+        24874,
+        21248,
+        16893,
+        6936,
+        916,
+        15
+      ],
+      "motor_neurons": {
+        "deepest_reached_layer": 4,
+        "median_layer_among_reached": 3.0,
+        "population_count": 815,
+        "reached_count": 815,
+        "unreached_count": 0
+      },
+      "nonseed_neurons": {
+        "deepest_reached_layer": 10,
+        "median_layer_among_reached": 4.0,
+        "population_count": 149226,
+        "reached_count": 148803,
+        "unreached_count": 423
+      },
+      "threshold_percent": 20
+    },
+    {
+      "all_neurons_including_seeds": {
+        "deepest_reached_layer": 20,
+        "median_layer_among_reached": 7.0,
+        "population_count": 165122,
+        "reached_count": 164699,
+        "unreached_count": 423
+      },
+      "descending_neurons": {
+        "deepest_reached_layer": 8,
+        "median_layer_among_reached": 5.0,
+        "population_count": 1314,
+        "reached_count": 1314,
+        "unreached_count": 0
+      },
+      "layer_counts_including_seeds": [
+        15896,
+        4513,
+        7227,
+        10274,
+        15013,
+        13103,
+        9903,
+        11570,
+        10559,
+        10401,
+        10459,
+        9332,
+        8577,
+        7643,
+        6969,
+        5463,
+        4101,
+        2300,
+        1113,
+        279,
+        4
+      ],
+      "motor_neurons": {
+        "deepest_reached_layer": 7,
+        "median_layer_among_reached": 4.0,
+        "population_count": 815,
+        "reached_count": 815,
+        "unreached_count": 0
+      },
+      "nonseed_neurons": {
+        "deepest_reached_layer": 20,
+        "median_layer_among_reached": 8.0,
+        "population_count": 149226,
+        "reached_count": 148803,
+        "unreached_count": 423
+      },
+      "threshold_percent": 30
+    }
+  ],
+  "provenance": {
+    "command": ".venv/bin/python -m io_analysis.primer_stats",
+    "dataset": "male-cns:v1.0",
+    "edge_extraction_timestamp_utc": "2026-09-19 15:22:39 UTC",
+    "environment": {
+      "numpy": "2.5.3",
+      "polars": "1.44.2",
+      "python": "3.14.6",
+      "scipy": "1.18.1"
+    },
+    "files": [
+      {
+        "bytes": 30608466,
+        "path": "data/io_census_nodes.csv",
+        "sha256": "d019a7f653be261ff8d86031c7b25594a39c37d235dc5928e55a431c11a9823f"
+      },
+      {
+        "bytes": 77183192,
+        "path": "data/raw/io_edges.parquet",
+        "sha256": "f88d8914eb5401cd4f02c647d7a3caa55d5a63bd3e2b2c584f785bf217f2d07b"
+      },
+      {
+        "bytes": 952,
+        "path": "data/raw/io_edges_manifest.json",
+        "sha256": "8e6cdfec4b6e2c0570cca67a371f78dd631322ab1dc9b9d2f78b0a785495b175"
+      },
+      {
+        "bytes": 9378,
+        "path": "src/io_analysis/classification.py",
+        "sha256": "0f47123a83b1271ccceb4bcb97769b33786139a140ecea8ac22ce982195f651a"
+      },
+      {
+        "bytes": 8385,
+        "path": "src/io_analysis/load_data.py",
+        "sha256": "8ce7e76f8a44dfc2ef1448383c1bfe7ae61b2548411b4ac94a19069b3a2ec8d1"
+      },
+      {
+        "bytes": 12928,
+        "path": "src/io_analysis/primer_stats.py",
+        "sha256": "1acedde9f975fa658b4eb29446f743e9912406ebd1d20810d2c1e286577f9689"
+      }
+    ]
+  },
+  "schema_version": 1,
+  "statistics": {
+    "alpn_to_kenyon_cells": {
+      "all_kenyon_cell_count": 4064,
+      "all_projection_neuron_count": 686,
+      "connected_kenyon_cell_count": 3812,
+      "connected_projection_neuron_count": 314,
+      "directed_edge_count": 22586,
+      "kenyon_cell_class": "Kenyon_Cell",
+      "kenyon_cells_without_recorded_alpn_input": 252,
+      "median_alpn_partners_all_kenyon_cells_including_zeros": 6.0,
+      "median_alpn_partners_connected_kenyon_cells": 6.0,
+      "projection_neuron_class": "ALPN"
+    },
+    "consensus_neurotransmitter_source_synapse_shares": {
+      "acetylcholine": {
+        "count": 73471245,
+        "denominator": 124025046,
+        "fraction": 0.5923903870190864
+      },
+      "dopamine": {
+        "count": 583124,
+        "denominator": 124025046,
+        "fraction": 0.004701663243083982
+      },
+      "gaba": {
+        "count": 25709222,
+        "denominator": 124025046,
+        "fraction": 0.20729056613290836
+      },
+      "glutamate": {
+        "count": 21049285,
+        "denominator": 124025046,
+        "fraction": 0.16971801808483103
+      },
+      "histamine": {
+        "count": 563450,
+        "denominator": 124025046,
+        "fraction": 0.004543033993311319
+      },
+      "missing": {
+        "count": 0,
+        "denominator": 124025046,
+        "fraction": 0.0
+      },
+      "octopamine": {
+        "count": 467888,
+        "denominator": 124025046,
+        "fraction": 0.00377252833270467
+      },
+      "serotonin": {
+        "count": 132786,
+        "denominator": 124025046,
+        "fraction": 0.001070638586983471
+      },
+      "unclear": {
+        "count": 2048046,
+        "denominator": 124025046,
+        "fraction": 0.016513164607090732
+      }
+    },
+    "density_including_self_pairs": {
+      "count": 25563197,
+      "denominator": 27265274884,
+      "fraction": 0.0009375734192579578
+    },
+    "directed_edge_count": 25563197,
+    "edge_thresholds": [
+      {
+        "edges": {
+          "count": 6235682,
+          "denominator": 25563197,
+          "fraction": 0.24393200897368197
+        },
+        "minimum_synapses": 5,
+        "synapses": {
+          "count": 89731551,
+          "denominator": 124025046,
+          "fraction": 0.7234954059198656
+        }
+      },
+      {
+        "edges": {
+          "count": 2749407,
+          "denominator": 25563197,
+          "fraction": 0.10755333145537313
+        },
+        "minimum_synapses": 10,
+        "synapses": {
+          "count": 67173142,
+          "denominator": 124025046,
+          "fraction": 0.5416094907152866
+        }
+      }
+    ],
+    "edge_weight": {
+      "maximum": 2591,
+      "mean": 4.851703251357802,
+      "median": 2.0
+    },
+    "input_synapse_shares_by_io_role": {
+      "descending": {
+        "input_synapse_count": 4582896,
+        "source_io_role": {
+          "ascending": {
+            "count": 572657,
+            "denominator": 4582896,
+            "fraction": 0.12495526845907041
+          },
+          "central_processing": {
+            "count": 2732690,
+            "denominator": 4582896,
+            "fraction": 0.596280168696824
+          },
+          "descending": {
+            "count": 598721,
+            "denominator": 4582896,
+            "fraction": 0.1306425020336486
+          },
+          "endocrine_output": {
+            "count": 220,
+            "denominator": 4582896,
+            "fraction": 4.800458050979119e-05
+          },
+          "motor_output": {
+            "count": 3594,
+            "denominator": 4582896,
+            "fraction": 0.0007842202834190433
+          },
+          "optic_processing": {
+            "count": 323796,
+            "denominator": 4582896,
+            "fraction": 0.07065314159431067
+          },
+          "other_efferent": {
+            "count": 764,
+            "denominator": 4582896,
+            "fraction": 0.00016670681595218394
+          },
+          "sensory_input": {
+            "count": 203359,
+            "denominator": 4582896,
+            "fraction": 0.044373470399502846
+          },
+          "unknown": {
+            "count": 1361,
+            "denominator": 4582896,
+            "fraction": 0.00029697379124466274
+          },
+          "vnc_processing": {
+            "count": 145734,
+            "denominator": 4582896,
+            "fraction": 0.03179954334551777
+          }
+        },
+        "target_neuron_count": 1314
+      },
+      "motor_output": {
+        "input_synapse_count": 3068807,
+        "source_io_role": {
+          "ascending": {
+            "count": 195602,
+            "denominator": 3068807,
+            "fraction": 0.06373877536123973
+          },
+          "central_processing": {
+            "count": 197623,
+            "denominator": 3068807,
+            "fraction": 0.06439733746697006
+          },
+          "descending": {
+            "count": 339565,
+            "denominator": 3068807,
+            "fraction": 0.11065049056522616
+          },
+          "endocrine_output": {
+            "count": 55,
+            "denominator": 3068807,
+            "fraction": 1.7922274030266485e-05
+          },
+          "motor_output": {
+            "count": 14800,
+            "denominator": 3068807,
+            "fraction": 0.0048227210117808
+          },
+          "optic_processing": {
+            "count": 6715,
+            "denominator": 3068807,
+            "fraction": 0.002188146729331626
+          },
+          "other_efferent": {
+            "count": 5056,
+            "denominator": 3068807,
+            "fraction": 0.0016475457726732245
+          },
+          "sensory_input": {
+            "count": 94394,
+            "denominator": 3068807,
+            "fraction": 0.03075918426932681
+          },
+          "unknown": {
+            "count": 500,
+            "denominator": 3068807,
+            "fraction": 0.0001629297639115135
+          },
+          "vnc_processing": {
+            "count": 2214497,
+            "denominator": 3068807,
+            "fraction": 0.7216149467855099
+          }
+        },
+        "target_neuron_count": 815
+      }
+    },
+    "median_neurons_per_nonmissing_type": 3.0,
+    "neurons_without_type": 2605,
+    "nonmissing_type_count": 11751,
+    "partner_degree_including_zero_degree_and_self_loops": {
+      "incoming": {
+        "maximum": 11526,
+        "median": 100.0,
+        "p99": 861.0,
+        "zero_degree_count": 659
+      },
+      "outgoing": {
+        "maximum": 11203,
+        "median": 113.0,
+        "p99": 797.0,
+        "zero_degree_count": 1583
+      }
+    },
+    "reciprocal_nonself_directed_edges": {
+      "count": 7639872,
+      "denominator": 25563096,
+      "fraction": 0.2988633301693973
+    },
+    "self_loop_edge_count": 101,
+    "sensory_shortest_paths": {
+      "motor_neurons_with_direct_sensory_edge": {
+        "count": 720,
+        "denominator": 815,
+        "fraction": 0.8834355828220859
+      },
+      "nonseed_neurons_within_two_hops": {
+        "count": 146168,
+        "denominator": 149226,
+        "fraction": 0.9795075925106885
+      },
+      "within_two_hops_including_seed_neurons": {
+        "count": 162064,
+        "denominator": 165122,
+        "fraction": 0.9814803599762599
+      }
+    },
+    "strong_components": {
+      "component_count": 1721,
+      "largest": {
+        "count": 163397,
+        "denominator": 165122,
+        "fraction": 0.9895531788616901
+      }
+    },
+    "synapse_count": 124025046,
+    "traced_neuron_count": 165122
+  },
+  "traversal_seed_population": {
+    "count": 15896,
+    "io_role": "sensory_input",
+    "unknown_input_category_included": 1829
+  }
+}

@@ -41,7 +41,7 @@ before treating any single row as authoritative.
 | **Positions** | `src/io_analysis/export_positions.py` | Soma position + io_role for the 140,024 of 165,122 traced neurons with recorded positions, for the Anatomy views | `app/data/positions.json` |
 | **Skeletons** | `r/build_neuron_skeletons.R`, `export_skeletons.py` | Per-neuron 3D morphology for every bodyid reachable via a pathway drill-down | `app/data/skeletons/*.json` |
 | **Search index** | `src/io_analysis/export_search_index.py` | Full-census (165k neuron) search index for the app's global search | `app/data/search_index.json` |
-| **Visualization** | `app/index.html` + `app.js` | 8-view interactive explorer, static, no backend | browser |
+| **Visualization** | `app/index.html` + `app.js` | 9-view interactive explorer, static, no backend | browser |
 
 Raw data (`data/io_census_nodes.csv`, `data/raw/io_edges.parquet`) is
 never modified by later stages - every derived table is a separate file,
@@ -175,6 +175,11 @@ pairs with very different neuron counts without normalizing first.
   extending this pipeline should read that module's docstring first.
 
 ## 6. Exploring it yourself
+
+Start with **Start Here** for dataset scope and navigation, then **ML Primer**
+for the distinction between wiring, activity and learning. Its longer
+[ML cheat sheet](ml_cheat_sheet.md) includes an example dynamics model,
+source-linked circuit analogies and reproducible graph statistics.
 
 ```sh
 cd app && python3 -m http.server 8000

@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Drosophila Under the Hood</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -89,6 +90,10 @@
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2.5 V17.5 M4 3.5 H14 L11.5 6.5 L14 9.5 H4"/></svg>
     Start Here
   </button>
+  <button data-view="mlprimer">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="4" cy="6" r="1.6"/><circle cx="4" cy="14" r="1.6"/><circle cx="10" cy="10" r="1.6"/><circle cx="16" cy="6" r="1.6"/><circle cx="16" cy="14" r="1.6"/><path d="M5.5 6.7 L8.5 9.3 M5.5 13.3 L8.5 10.7 M11.5 9.3 L14.5 6.7 M11.5 10.7 L14.5 13.3"/></svg>
+    ML Primer
+  </button>
   <button data-view="overview">
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="2" y="3" width="2" height="6" rx="1"/><rect x="2" y="11" width="2" height="6" rx="1"/><rect x="9" y="7" width="2" height="6" rx="1"/><rect x="16" y="3" width="2" height="6" rx="1"/><rect x="16" y="11" width="2" height="6" rx="1"/><path d="M4 6 L9 9 M4 14 L9 10 M11 8 L16 5 M11 10 L16 13"/></svg>
     Overview
@@ -158,7 +163,7 @@
           <li><strong>Nodes</strong> = neurons. ~165,122 traced.</li>
           <li><strong>Edges</strong> = synaptic connections. ~25.5M, directed, weighted.</li>
           <li><strong>Edge weight</strong> = the dataset's reported synapse count between two specific neurons. These are reconstructed counts, not weights learned by this explorer.</li>
-          <li><strong>Architecture</strong>: input (sensory) → processing (5 coarse regions, dominated by the optic lobe) → output (motor/endocrine): a sparse, modular, <em>grown</em> analogue of an input/hidden/output stack, not a designed one.</li>
+          <li><strong>Architecture</strong>: sensory, processing and motor/endocrine groups describe roles in a recurrent network; the input → processing → output overview is one selected slice of its wiring. <a href="#" data-jump="mlprimer">See how connectivity relates to computation.</a></li>
           <li><strong>Density</strong>: 25.5M edges across 165k×165k possible pairs is ~0.09% dense, far sparser than a dense MLP layer, closer in spirit to a very large, irregular sparse GNN.</li>
         </ul>
       </div>
@@ -174,12 +179,103 @@
       <div class="start-col">
         <h3>Where to look next</h3>
         <ul>
+          <li><a href="#" data-jump="mlprimer">ML Primer</a>: activity, recurrent computation and experiments with the wiring.</li>
           <li><a href="#" data-jump="overview">Overview</a>: a Sankey diagram of the input->processing->output flow (~6.6% of total synapse weight by design - it excludes recurrence and processing-to-processing links; see the tab for the exact figure).</li>
           <li><a href="#" data-jump="matrix">I/O Matrix</a>, then <a href="#" data-jump="pathway">Pathway Explorer</a>: zoom from "all input categories times all output categories" down to one real circuit.</li>
           <li><a href="#" data-jump="detail">Neuron Detail</a>: one real neuron's actual measured 3D shape, not a stylized icon.</li>
           <li><a href="#" data-jump="anatomy">Anatomy</a> / <a href="#" data-jump="anatomy3d">Anatomy 3D</a>: 140,024 of 165,122 traced neurons (those with a recorded soma position) plotted at their real physical position. No layout algorithm involved, so this is what it looks like "for free."</li>
         </ul>
       </div>
+    </div>
+  </section>
+
+  <section id="view-mlprimer" class="view scrollable">
+    <div class="start-hero">
+      <h2>From wiring to computation.</h2>
+      <p class="start-sub">Connectivity constrains a model. Dynamics turn it into activity; experiments test what the wiring contributes.</p>
+    </div>
+
+    <div class="ml-section ml-dynamics">
+      <h3>One activity update</h3>
+      <div class="ml-flow" aria-label="An illustrative activity update">
+        <div class="ml-flow-inputs"><span>Stimulus</span><span aria-hidden="true">+</span><span>Neighbours</span><span aria-hidden="true">+</span><span>Previous state</span></div>
+        <span class="ml-flow-arrow" aria-hidden="true">→</span>
+        <strong>New activity</strong>
+      </div>
+      <p>Inputs combine through excitation and inhibition. Activity relaxes over time; feedback carries its effects into later updates.</p>
+      <p><strong>Measured:</strong> reconstructed connections and synapse counts. <strong>Modelled:</strong> effective strengths, response functions and time constants.</p>
+      <details class="ml-model">
+        <summary>A minimal model for ML engineers</summary>
+        <code class="ml-equation">x_next = (1 − α) ⊙ x + α ⊙ φ(Wx + Bu + b)</code>
+        <p>x is activity, u the stimulus, φ a response function; α sets how much state changes per update. Here W<sub>ij</sub> connects j → i. Counts constrain W without determining physiological weights. This illustrative rate model omits spikes and cellular compartments.</p>
+      </details>
+    </div>
+
+    <div class="ml-stats">
+      <div class="ml-stat"><span class="ml-stat-value">54%</span><span class="ml-stat-label">of synapses on 11% of edges (≥10 contacts)</span></div>
+      <div class="ml-stat"><span class="ml-stat-value">99%</span><span class="ml-stat-label">of neurons in one strongly connected component</span></div>
+      <div class="ml-stat"><span class="ml-stat-value">4</span><span class="ml-stat-label">median traversal layer among reached non-sensory neurons at a 20% input threshold</span></div>
+      <div class="ml-stat"><span class="ml-stat-value">1,314</span><span class="ml-stat-label">descending neurons linking brain and nerve cord</span></div>
+      <div class="ml-stat"><span class="ml-stat-value">59 / 21 / 17%</span><span class="ml-stat-label">synapses by source transmitter: ACh / GABA / glutamate; signs depend on receptors</span></div>
+    </div>
+
+    <details class="ml-section ml-model">
+      <summary>How these numbers were measured</summary>
+      <p>MaleCNS v1.0, Traced neurons, chemical connections with ≥1 synapse. Traversal starts from all 15,896 sensory neurons, including unknown modalities. A neuron joins once earlier layers supply ≥20% of its recorded input synapses. It reaches 148,803 of 149,226 non-sensory neurons; the median excludes 423 unreached neurons. Thresholds of 10% / 20% / 30% give medians 3 / 4 / 8.</p>
+    </details>
+
+    <div class="ml-section">
+      <h3>Useful modelling assumptions</h3>
+      <div class="ml-table-wrap">
+        <table class="ml-table">
+          <thead><tr><th>Connectome</th><th>ML concept</th><th>Where it breaks</th></tr></thead>
+          <tbody>
+            <tr><td>Dale-like constraint</td><td>one sign per column of W<sub>ij</sub> (j → i)</td><td>transmitter labels alone cannot resolve receptor-dependent signs</td></tr>
+            <tr><td>Cell type</td><td>shared parameters</td><td>a modelling assumption; same-type cells differ</td></tr>
+            <tr><td>Nerve cord (VNC)</td><td>local controller</td><td>72% of motor input synapses come from VNC interneurons; 11% from descending neurons</td></tr>
+            <tr><td>Neuromodulation</td><td>context and plasticity gating</td><td>wiring alone lacks its full reach and dynamics</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="ml-section">
+      <h3>Three kinds of computation</h3>
+      <div class="start-grid ml-cards">
+        <div class="start-col">
+          <h3>Vision → local filters</h3>
+          <p>Repeated columns suggest convolution; recurrent connections add temporal processing. A <a href="https://www.nature.com/articles/s41586-024-07939-3" target="_blank" rel="noopener">connectome-constrained model</a> fits unknown parameters to a motion task.</p>
+        </div>
+        <div class="start-col">
+          <h3>Mushroom body → sparse code</h3>
+          <p>Expansion into Kenyon cells inspired <a href="https://doi.org/10.1126/science.aam9868" target="_blank" rel="noopener">fly hashing</a>. Dopamine gates learning at <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4674068/" target="_blank" rel="noopener">KC→output synapses</a>, one major plasticity site.</p>
+        </div>
+        <div class="start-col">
+          <h3>Compass → persistent state</h3>
+          <p>Recurrent <a href="https://doi.org/10.1126/science.aal4835" target="_blank" rel="noopener">ring-attractor dynamics</a> maintain heading. <a href="https://www.nature.com/articles/s41586-019-1772-4" target="_blank" rel="noopener">Plastic sensory inputs</a> align that state with landmarks.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ml-section">
+      <h3>Paths and time</h3>
+      <p><a href="#" data-jump="matrix">Shortest paths</a> find shortcuts. Traversal layers depend on seeds and thresholds; neither measures computational depth or elapsed time. Feedback permits repeated processing. <a href="#" data-jump="dynamics">Dynamics</a> illustrates a separate toy model on 24 groups.</p>
+    </div>
+
+    <div class="ml-section">
+      <h3>Experiment without fooling yourself</h3>
+      <ul class="ml-list">
+        <li><strong>Compare wiring:</strong> use degree-preserving shuffles, identical training and held-out evaluation.</li>
+        <li><strong>Audit the readout:</strong> decoder accuracy alone cannot establish a wiring-specific mechanism; fixed readouts also encode assumptions.</li>
+        <li><strong>Ablate and vary thresholds:</strong> test predicted failures and robustness to filtering weak connections.</li>
+      </ul>
+    </div>
+
+    <div class="ml-section ml-next">
+      <h3>Try it: smell → front leg</h3>
+      <p>Which connections survive a higher synapse-count threshold?</p>
+      <a class="ml-explore" href="?view=pathway&amp;pathway=olfaction__front_leg&amp;bodyid=10065" data-jump="pathway" data-pathway="olfaction__front_leg" data-bodyid="10065">Explore around descending neuron DNb05 →</a>
+      <a href="https://github.com/abstractionthief/drosophila-under-the-hood/blob/main/docs/ml_cheat_sheet.md" target="_blank" rel="noopener">Full cheat sheet &amp; measurement methods</a>
     </div>
   </section>
 
